@@ -54,7 +54,7 @@ In this approach, we try to solve the bigger problem by recursively finding the 
 We’ll see this technique in our example of Fibonacci numbers. First, let’s see the non-DP recursive solution for finding the nth Fibonacci number:
 
 ```python
-def calculate_fibanacci(n):
+def calculate_fibonacci(n):
     if n < 2:
         return n
 
@@ -68,7 +68,7 @@ print(f"7th Fibonacci is ---> {calculate_fibonacci(7)}")
 As we saw above, this problem shows the overlapping subproblems pattern, so let’s make use of <b>Memoization</b> here. We can use an array to store the already solved subproblems
 
 ```python
-def calculate_fibanacci(n):
+def calculate_fibonacci(n):
     memoize = {}
 
     def fib(n):
@@ -96,7 +96,7 @@ Let’s apply <b>Tabulation</b> to our example of Fibonacci numbers. Since we kn
 Here is the code for our <b>bottom-up dynamic programming</b> approach:
 
 ```python
-def calculate_fibanacci(n):
+def calculate_fibonacci(n):
     dp = [0, 1]
     for i in range(2, n+1):
         dp.append(dp[i-1] + dp[i-2])
