@@ -59,6 +59,7 @@ def calculate_fibanacci(n):
         return n
 
     return calculate_fibanacci(n-1) + calculate_fibanacci(n-2)
+
 print(f"5th Fibonacci is ---> {calculate_fibonacci(5)}")
 print(f"6th Fibonacci is ---> {calculate_fibonacci(6)}")
 print(f"7th Fibonacci is ---> {calculate_fibonacci(7)}")
@@ -78,6 +79,7 @@ def calculate_fibanacci(n):
         memoize[n] = fib(n-1) + fib(n-2)
         return memoize[n]
     return fib(n)
+
 print(f"5th Fibonacci is ---> {calculate_fibonacci(5)}")
 print(f"6th Fibonacci is ---> {calculate_fibonacci(6)}")
 print(f"7th Fibonacci is ---> {calculate_fibonacci(7)}")
@@ -93,18 +95,16 @@ Let’s apply <b>Tabulation</b> to our example of Fibonacci numbers. Since we kn
 
 Here is the code for our <b>bottom-up dynamic programming</b> approach:
 
-```js
-function calculateFibonacci(n) {
-  const dp = [0, 1];
-  for (let i = 2; i <= n; i++) {
-    dp[i] = dp[i - 1] + dp[i - 2];
-  }
-  return dp[n];
-}
+```python
+def calculate_fibanacci(n):
+    dp = [0, 1]
+    for i in range(2, n+1):
+        dp.append(dp[i-1] + dp[i-2])
+    return dp[n]
 
-console.log(`5th Fibonacci is ---> ${calculateFibonacci(5)}`);
-console.log(`6th Fibonacci is ---> ${calculateFibonacci(6)}`);
-console.log(`7th Fibonacci is ---> ${calculateFibonacci(7)}`);
+print(f"5th Fibonacci is ---> {calculate_fibonacci(5)}")
+print(f"6th Fibonacci is ---> {calculate_fibonacci(6)}")
+print(f"7th Fibonacci is ---> {calculate_fibonacci(7)}")
 ```
 
 <b>In this course, we will always start with a brute-force recursive solution, which is the best way to start solving any DP problem!</b> Once we have a recursive solution then we will apply <i>memoization</i> and Tabulation techniques.
