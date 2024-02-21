@@ -53,40 +53,34 @@ In this approach, we try to solve the bigger problem by recursively finding the 
 
 We’ll see this technique in our example of Fibonacci numbers. First, let’s see the non-DP recursive solution for finding the nth Fibonacci number:
 
-```js
-function calculateFibonacci(n) {
-  if (n < 2) return n;
+```python
+def calculate_fibanacci(n):
+    if n < 2:
+        return n
 
-  return calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
-}
-
-console.log(`5th Fibonacci is ---> ${calculateFibonacci(5)}`);
-console.log(`6th Fibonacci is ---> ${calculateFibonacci(6)}`);
-console.log(`7th Fibonacci is ---> ${calculateFibonacci(7)}`);
+    return calculate_fibanacci(n-1) + calculate_fibanacci(n-2)
+print(f"5th Fibonacci is ---> {calculate_fibonacci(5)}")
+print(f"6th Fibonacci is ---> {calculate_fibonacci(6)}")
+print(f"7th Fibonacci is ---> {calculate_fibonacci(7)}")
 ```
 
 As we saw above, this problem shows the overlapping subproblems pattern, so let’s make use of <b>Memoization</b> here. We can use an array to store the already solved subproblems
 
-```js
-function calculateFibonacci(n) {
-  const memoize = [];
+```python
+def calculate_fibanacci(n):
+    memoize = {}
 
-  function fib(n) {
-    if (n < 2) return n;
-
-    // if we have already solved this subproblem, simply return the result from the cache
-    if (memoize[n]) return memoize[n];
-
-    memoize[n] = fib(n - 1) + fib(n - 2);
-    return memoize[n];
-  }
-
-  return fib(n);
-}
-
-console.log(`5th Fibonacci is ---> ${calculateFibonacci(5)}`);
-console.log(`6th Fibonacci is ---> ${calculateFibonacci(6)}`);
-console.log(`7th Fibonacci is ---> ${calculateFibonacci(7)}`);
+    def fib(n):
+        if n < 2:
+            return n
+        if n in memoize:
+            return memoize[n]
+        memoize[n] = fib(n-1) + fib(n-2)
+        return memoize[n]
+    return fib(n)
+print(f"5th Fibonacci is ---> {calculate_fibonacci(5)}")
+print(f"6th Fibonacci is ---> {calculate_fibonacci(6)}")
+print(f"7th Fibonacci is ---> {calculate_fibonacci(7)}")
 ```
 
 ### Bottom-up with Tabulation
